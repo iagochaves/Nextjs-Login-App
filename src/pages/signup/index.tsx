@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import { SearchIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 import SignUpForm from '../../components/Form/SignUpForm';
 import { api } from '../../services/api';
@@ -7,8 +8,12 @@ import {
   SignUpScheme,
   signUpValidationScheme,
 } from '../../utils/validations.scheme';
+import { useState } from 'react';
+import SearchUser from '../../components/SearchUser';
 
 const SignUp: React.FC = () => {
+  const [isSearchingUser, setIsSearchingUser] = useState(false);
+
   const router = useRouter();
 
   const handleOnSubmit = async (formData: SignUpScheme) => {
@@ -20,22 +25,31 @@ const SignUp: React.FC = () => {
       router.push('/');
     }
   };
+
+  if (isSearchingUser) {
+    return <SearchUser setIsSearchingUser={setIsSearchingUser} />;
+  }
   return (
-    <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
-        <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-            Create your account
-          </h2>
-        </div>
-        <Formik
-          initialValues={SIGN_UP_INITIAL_VALUES}
-          validationSchema={signUpValidationScheme}
-          onSubmit={handleOnSubmit}
+    <div className="max-w-md w-full space-y-4">
+      <div>
+        <h2 className="text-center text-3xl font-extrabold text-gray-900">
+          Create your account
+        </h2>
+        <button
+          onClick={() => setIsSearchingUser(true)}
+          className="mt-3 text-sm flex items-center space-x-2 text-green-900 hover:underline"
         >
-          {(formikProps) => <SignUpForm {...formikProps} />}
-        </Formik>
+          <SearchIcon className="h-5 w-5 " aria-hidden="true" />
+          <p>Search for a user</p>
+        </button>
       </div>
+      <Formik
+        initialValues={SIGN_UP_INITIAL_VALUES}
+        validationSchema={signUpValidationScheme}
+        onSubmit={handleOnSubmit}
+      >
+        {(formikProps) => <SignUpForm {...formikProps} />}
+      </Formik>
     </div>
   );
 };

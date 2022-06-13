@@ -6,7 +6,7 @@ import Input from '../Input';
 
 const SignInForm: React.FC<FormikProps<SignInScheme>> = () => {
   return (
-    <Form className="mt-8 space-y-4">
+    <Form className="space-y-4">
       <div>
         <Input label="Email address" name="emailAddress" required />
       </div>
