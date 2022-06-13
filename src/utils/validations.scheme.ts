@@ -27,5 +27,6 @@ export const signUpValidationScheme = yup.object({
   password: yup.string().required('Password is required'),
   passwordConfirmation: yup
     .string()
-    .oneOf([yup.ref('password'), null], 'Passwords must match'),
+    .oneOf([yup.ref('password'), null], 'Passwords must match')
+    .required('Password is required'),
 });

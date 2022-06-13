@@ -1,17 +1,28 @@
 import { LockClosedIcon } from '@heroicons/react/solid';
 import { Form, FormikProps } from 'formik';
 import Link from 'next/link';
-import { SignInScheme } from '../../utils/validations.scheme';
+import { SignUpScheme } from '../../utils/validations.scheme';
 import Input from '../Input';
 
-const SignInForm: React.FC<FormikProps<SignInScheme>> = () => {
+const SignUpForm: React.FC<FormikProps<SignUpScheme>> = () => {
   return (
     <Form className="mt-8 space-y-4">
-      <div>
-        <Input label="Email address" name="emailAddress" required />
-      </div>
-      <div>
-        <Input label="Passoword" type="password" name="password" required />
+      <div className="grid grid-cols-6 gap-4">
+        <div className="col-span-6">
+          <Input label="Email address" name="emailAddress" required />
+        </div>
+
+        <div className="col-span-6 sm:col-span-3">
+          <Input label="Passoword" type="password" name="password" required />
+        </div>
+        <div className="col-span-6 sm:col-span-3">
+          <Input
+            label="Confirm Password"
+            type="password"
+            name="passwordConfirmation"
+            required
+          />
+        </div>
       </div>
 
       <div>
@@ -25,14 +36,14 @@ const SignInForm: React.FC<FormikProps<SignInScheme>> = () => {
               aria-hidden="true"
             />
           </span>
-          Login
+          Sign Up
         </button>
       </div>
       <div className="text-sm">
-        <span>Not registered yet?&nbsp;</span>
-        <Link href="/signup">
+        <span>Already have an account?&nbsp;</span>
+        <Link href="/">
           <a className="font-medium text-indigo-600 hover:text-indigo-500">
-            Create an Account
+            Sign Up
           </a>
         </Link>
       </div>
@@ -40,4 +51,4 @@ const SignInForm: React.FC<FormikProps<SignInScheme>> = () => {
   );
 };
 
-export default SignInForm;
+export default SignUpForm;
