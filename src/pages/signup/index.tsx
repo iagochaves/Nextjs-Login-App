@@ -1,14 +1,24 @@
 import { Formik } from 'formik';
+import { useRouter } from 'next/router';
 import SignUpForm from '../../components/Form/SignUpForm';
+import { api } from '../../services/api';
 import { SIGN_UP_INITIAL_VALUES } from '../../utils/constants';
 import {
   SignUpScheme,
   signUpValidationScheme,
 } from '../../utils/validations.scheme';
 
-const SignIn: React.FC = () => {
-  const handleOnSubmit = (formData: SignUpScheme) => {
-    console.log(formData);
+const SignUp: React.FC = () => {
+  const router = useRouter();
+
+  const handleOnSubmit = async (formData: SignUpScheme) => {
+    const { data } = await api.post('/users', {
+      emailAddress: formData.emailAddress,
+      password: formData.password,
+    });
+    if (data) {
+      router.push('/');
+    }
   };
   return (
     <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -30,4 +40,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
