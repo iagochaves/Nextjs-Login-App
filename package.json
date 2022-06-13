@@ -7,7 +7,8 @@
     "build": "next build",
     "server": "npx json-server --watch users.json --port 3333 --delay 300",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest"
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
@@ -22,12 +23,19 @@
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.2",
+    "@testing-library/dom": "^8.13.0",
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/react": "^13.3.0",
+    "@testing-library/user-event": "^14.2.0",
     "@types/node": "17.0.42",
     "@types/react": "18.0.12",
     "@types/react-dom": "18.0.5",
     "autoprefixer": "^10.4.7",
     "eslint": "8.17.0",
     "eslint-config-next": "12.1.6",
+    "jest": "^28.1.1",
+    "jest-dom": "^4.0.0",
+    "jest-environment-jsdom": "^28.1.1",
     "postcss": "^8.4.14",
     "tailwindcss": "^3.1.2",
     "typescript": "4.7.3"

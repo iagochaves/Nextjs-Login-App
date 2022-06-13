@@ -9,6 +9,11 @@
       "emailAddress": "iagovieirachaves@gmail.com",
       "password": "123",
       "id": 2
+    },
+    {
+      "emailAddress": "testeste@gmail.com",
+      "password": "asd",
+      "id": 3
     }
   ]
 }

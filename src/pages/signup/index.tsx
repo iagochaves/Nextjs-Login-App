@@ -1,13 +1,8 @@
-import { Formik } from 'formik';
 import { SearchIcon } from '@heroicons/react/outline';
 import { useRouter } from 'next/router';
 import SignUpForm from '../../components/Form/SignUpForm';
 import { api } from '../../services/api';
-import { SIGN_UP_INITIAL_VALUES } from '../../utils/constants';
-import {
-  SignUpScheme,
-  signUpValidationScheme,
-} from '../../utils/validations.scheme';
+import { SignUpScheme } from '../../utils/validations.scheme';
 import { useState } from 'react';
 import SearchUser from '../../components/SearchUser';
 
@@ -43,13 +38,7 @@ const SignUp: React.FC = () => {
           <p>Search for a user</p>
         </button>
       </div>
-      <Formik
-        initialValues={SIGN_UP_INITIAL_VALUES}
-        validationSchema={signUpValidationScheme}
-        onSubmit={handleOnSubmit}
-      >
-        {(formikProps) => <SignUpForm {...formikProps} />}
-      </Formik>
+      <SignUpForm handleOnSubmit={handleOnSubmit} />
     </div>
   );
 };

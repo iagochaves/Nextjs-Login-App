@@ -1,11 +1,6 @@
-import { Formik } from 'formik';
 import SignInForm from '../components/Form/SignInForm';
 import { api } from '../services/api';
-import { SIGN_IN_INITIAL_VALUES } from '../utils/constants';
-import {
-  SignInScheme,
-  signInValidationScheme,
-} from '../utils/validations.scheme';
+import { SignInScheme } from '../utils/validations.scheme';
 
 type UserData = SignInScheme[];
 
@@ -31,13 +26,7 @@ const SignIn: React.FC = () => {
           Sign in to your account
         </h2>
       </div>
-      <Formik
-        initialValues={SIGN_IN_INITIAL_VALUES}
-        validationSchema={signInValidationScheme}
-        onSubmit={handleOnSubmit}
-      >
-        {(formikProps) => <SignInForm {...formikProps} />}
-      </Formik>
+      <SignInForm handleOnSubmit={handleOnSubmit} />
     </div>
   );
 };
